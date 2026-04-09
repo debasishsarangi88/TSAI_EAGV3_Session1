@@ -22,6 +22,54 @@ The selected text is replaced in-place with grammar fixes or tone rewrites.
   - Make this longer
   - Make it more direct
 
+## How grammar and rewriting works
+
+### LLM used
+
+- Provider endpoint: `https://text.pollinations.ai`
+- Query style used by the extension:
+  - `https://text.pollinations.ai/<encoded prompt>?model=openai&private=true`
+- Model parameter sent: `model=openai`
+- API key required: **No**
+
+### Grammar correction flow
+
+When you click **Check grammar**:
+
+1. Extension reads currently selected text in the email editor.
+2. It sends a grammar-focused prompt to the free LLM endpoint.
+3. If LLM returns text successfully, that corrected text is used.
+4. If LLM fails (network/rate-limit/error), extension falls back to LanguageTool:
+   - Endpoint: `https://api.languagetool.org/v2/check`
+   - Language: `en-US`
+   - Applies suggested replacements to produce corrected text.
+5. Corrected text replaces the selected content in the compose box.
+
+### Rewrite task flow (other actions)
+
+For each action below, the extension sends selected text + a specific instruction prompt:
+
+- **Make this more professional tone**: business/professional wording
+- **Make this casual**: friendly, informal wording
+- **Make this sound like rhyme**: playful rhyme-style output
+- **Make this shorter**: concise version preserving key points
+- **Make this longer**: expanded version with extra detail
+- **Make it more direct**: clear and action-oriented phrasing
+
+Flow:
+
+1. Send rewrite instruction to free LLM endpoint.
+2. If LLM succeeds, use rewritten output.
+3. If LLM fails, fallback runs grammar correction only via LanguageTool (style rewrite may not be preserved in fallback mode).
+4. Replace selected text in editor.
+
+### Fallback and reliability logic
+
+- If message delivery to a tab/frame fails, `background.js` injects `content.js` using `chrome.scripting.executeScript` and retries.
+- Right-click action passes `selectionText` and `frameId` from Chrome context menu to target the correct compose frame.
+- If live selection is lost after right-click/panel click, extension uses cached selection text and stored editable element to apply replacement.
+- Content script has duplicate-injection guard to avoid multiple handler registration.
+
 ## Project structure
 
 - `manifest.json` - Extension manifest (MV3), permissions, content scripts, popup
