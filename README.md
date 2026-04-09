@@ -1,11 +1,11 @@
-# Grammer Lite Chrome Extension (MV3)
+# Grammar Lite Chrome Extension (MV3)
 
-Grammer Lite is a Chrome extension that improves selected email text using free AI.  
+Grammar Lite is a Chrome extension that improves selected email text using free AI.  
 You can open it by:
 
 - selecting text and pressing `Shift + >`
-- right-clicking selected text and clicking **Apply Grammer Lite**
-- clicking the extension icon and pressing **Apply Grammer Lite** in the popup
+- right-clicking selected text and clicking **Apply Grammar Lite**
+- clicking the extension icon and pressing **Apply Grammar Lite** in the popup
 
 The selected text is replaced in-place with grammar fixes or tone rewrites.
 
@@ -83,8 +83,8 @@ Flow:
 ### 1) Create a project folder
 
 ```bash
-mkdir Grammer_Lite
-cd Grammer_Lite
+mkdir Grammar_Lite
+cd Grammar_Lite
 ```
 
 ### 2) Create these files
@@ -109,7 +109,7 @@ Use `manifest_version: 3` and include:
 
 Add logic for:
 
-- creating right-click context menu: **Apply Grammer Lite**
+- creating right-click context menu: **Apply Grammar Lite**
 - handling context menu click on selected text
 - routing message to correct frame (`frameId`)
 - retrying message after script injection fallback using `chrome.scripting.executeScript`
@@ -134,7 +134,7 @@ Add logic for:
 
 ### 6) Implement popup (`popup.html` + `popup.js`)
 
-- Popup contains button: **Apply Grammer Lite**
+- Popup contains button: **Apply Grammar Lite**
 - On click, send message to background to open the in-page panel on current tab
 
 ### 7) Load extension in Chrome
@@ -142,7 +142,7 @@ Add logic for:
 1. Open `chrome://extensions`
 2. Enable **Developer mode**
 3. Click **Load unpacked**
-4. Select your `Grammer_Lite` folder
+4. Select your `Grammar_Lite` folder
 
 ### 8) Test workflow
 
@@ -150,8 +150,8 @@ Add logic for:
 2. Highlight sentence(s)
 3. Trigger one of:
    - `Shift + >`
-   - right-click -> **Apply Grammer Lite**
-   - extension icon -> **Apply Grammer Lite**
+   - right-click -> **Apply Grammar Lite**
+   - extension icon -> **Apply Grammar Lite**
 4. Choose action (for example: **Check grammar**)
 5. Verify selected text is replaced
 
