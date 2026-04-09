@@ -354,7 +354,7 @@
 
     const title = document.createElement("div");
     title.className = "gl-title";
-    title.textContent = "Grammer Lite";
+    title.textContent = "Grammar Lite";
     panel.appendChild(title);
 
     const grid = document.createElement("div");
@@ -391,7 +391,7 @@
     document.documentElement.appendChild(panel);
   }
 
-  function openGrammerLite(preferredText) {
+  function openGrammarLite(preferredText) {
     cachedSelection = refreshSelectionCache() || lastKnownSelection;
     if (preferredText?.trim()) {
       lastKnownSelectedText = preferredText.trim();
@@ -444,7 +444,7 @@
 
       event.preventDefault();
       event.stopPropagation();
-      openGrammerLite();
+      openGrammarLite();
     },
     true
   );
@@ -463,7 +463,7 @@
 
   chrome.runtime.onMessage.addListener((message) => {
     if (message?.type === "GRAMMER_LITE_OPEN") {
-      openGrammerLite(message.selectedText);
+      openGrammarLite(message.selectedText);
     }
   });
 })();

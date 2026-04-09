@@ -48,7 +48,7 @@ function createContextMenu() {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: "grammer-lite-open",
-      title: "Apply Grammer Lite",
+      title: "Apply Grammar Lite",
       contexts: ["selection"]
     });
   });
