@@ -9,6 +9,10 @@ You can open it by:
 
 The selected text is replaced in-place with grammar fixes or tone rewrites.
 
+## Demo
+
+Screen recording of the extension: [Grammar Lite demo on YouTube](https://youtu.be/unWojUOTQgA).
+
 ## Features
 
 - Free AI rewrite (no API key) using `text.pollinations.ai`
